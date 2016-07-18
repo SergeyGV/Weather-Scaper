@@ -6,6 +6,10 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+/**
+ * SourceCollector - A class to extract the HTML Source Code from any given
+ * website.
+ */
 public class SourceCollector {
 
     public static String getRawHTMLData() throws IOException {
