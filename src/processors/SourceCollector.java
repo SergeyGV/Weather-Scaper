@@ -12,19 +12,25 @@ import java.net.URLConnection;
  */
 public class SourceCollector {
 
-    public static String getRawHTMLData() throws IOException {
+    public static String getRawHTMLData() throws IOException, InterruptedException {
 
         URL WeatherNetwork = new URL("https://www.theweathernetwork.com/ca/weather/ontario/mississauga");
         URLConnection WNOpen = WeatherNetwork.openConnection();
+        Thread.sleep(20000);
         BufferedReader getter = new BufferedReader(new InputStreamReader(
                 WNOpen.getInputStream(), "UTF-8"));
         String line;
-        StringBuilder container = new StringBuilder();
+        //StringBuilder container = new StringBuilder();
+        String text = "";
         while ((line = getter.readLine()) != null) {
-            container.append(line);
+            //container.append(line);
+            text = "" + text + line;
         }
         getter.close();
-        return container.toString();
+        //text = text.replaceAll("\\\\*<*[*^*>*]*>*-*!*","");
+        System.out.println(text.replaceAll("\\\\*<*[*^*>*]*>*-*!*",""));
+        //return container.toString().replaceAll("\\\\<[^>]*>","");
+        return text;
 
     }
 

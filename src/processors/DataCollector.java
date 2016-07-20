@@ -10,7 +10,8 @@ import java.util.regex.Pattern;
 public class DataCollector {
 
     private String HTMLData;
-    private String curWeather = "class=\\\"temperature\\\"";
+    //private String curWeather = "class=\\\"temperature\\\"";
+    private String curWeather = "p class=\\\\\"temperature\\\\\"";
 
     public DataCollector(String data) {
 
@@ -27,6 +28,7 @@ public class DataCollector {
             System.out.println("Found something!");
             System.out.println(mch.start());
             System.out.println(mch.end());
+            System.out.println(HTMLData.substring(mch.start(),mch.end()));
         }
         return 0;
 
